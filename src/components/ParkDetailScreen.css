@@ -153,9 +153,39 @@
 }
 
 .ar-description {
+  text-align: center;
+}
+
+.ar-description p {
   color: rgba(255,255,255,0.9);
   font-size: 1.1rem;
-  margin: 0;
+  margin: 10px 0;
+}
+
+.ar-instruction {
+  font-size: 0.9rem !important;
+  color: rgba(255,255,255,0.7) !important;
+}
+
+.marker-link {
+  color: #00ff00;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  padding: 5px 10px;
+  border-radius: 15px;
+  background: rgba(0, 255, 0, 0.1);
+}
+
+.marker-link:hover {
+  color: #00cc00;
+  background: rgba(0, 255, 0, 0.2);
+  transform: translateY(-1px);
+}
+
+.separator {
+  margin: 0 10px;
+  color: rgba(255,255,255,0.5);
 }
 
 .ar-overlay {
