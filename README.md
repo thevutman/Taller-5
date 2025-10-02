@@ -1,70 +1,154 @@
-# Getting Started with Create React App
+# 🌳 Parques AR - Aplicación Web Interactiva
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Una aplicación web moderna que permite explorar los parques del pueblo con tecnología de realidad aumentada.
 
-## Available Scripts
+## 🚀 Características
 
-In the project directory, you can run:
+### 📱 Tres Pantallas Principales
 
-### `npm start`
+1. **Pantalla de Inicio**
+   - Interfaz de bienvenida con animaciones
+   - Botón para cargar el sistema
+   - Información sobre las características de la app
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. **Mapa Interactivo del Pueblo**
+   - Mapa personalizado con vista aérea
+   - 3 parques disponibles: Principal, Santafé y Recreativo
+   - Marcadores interactivos con información emergente
+   - Navegación intuitiva entre parques
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3. **Detalles del Parque con Tótem 3D**
+   - Información detallada de cada parque
+   - Tótem 3D interactivo renderizado con Three.js
+   - Funcionalidad de Realidad Aumentada
+   - Simulación de cámara AR para escanear tótems físicos
 
-### `npm test`
+### 🎯 Funcionalidades de AR
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Activación de Cámara AR**: Botón para activar la experiencia de realidad aumentada
+- **Interfaz de Escaneo**: Simulación de cámara con visor para localizar tótems físicos
+- **Experiencia Inmersiva**: Los usuarios pueden "escanear" los tótems físicos en los parques reales
 
-### `npm run build`
+## 🛠️ Tecnologías Utilizadas
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **React 19.2.0**: Framework principal
+- **React Router DOM**: Navegación entre pantallas
+- **Three.js**: Renderizado 3D de los tótems
+- **@react-three/fiber**: Integración de Three.js con React
+- **@react-three/drei**: Componentes y utilidades 3D adicionales
+- **CSS3**: Animaciones y estilos modernos con gradientes y efectos
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🎨 Diseño y UX
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Diseño Responsive**: Adaptable a dispositivos móviles y desktop
+- **Animaciones Fluidas**: Transiciones suaves entre pantallas
+- **Interfaz Moderna**: Gradientes, efectos de cristal (glassmorphism) y sombras
+- **Accesibilidad**: Controles intuitivos y navegación clara
 
-### `npm run eject`
+## 📦 Instalación y Uso
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Prerrequisitos
+- Node.js (versión 14 o superior)
+- npm o yarn
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Pasos de Instalación
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. **Clonar o descargar el proyecto**
+   ```bash
+   cd parques-ar-app
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. **Instalar dependencias**
+   ```bash
+   npm install
+   ```
 
-## Learn More
+3. **Iniciar la aplicación**
+   ```bash
+   npm start
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+4. **Abrir en el navegador**
+   - La aplicación se abrirá automáticamente en `http://localhost:3000`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🗺️ Navegación de la Aplicación
 
-### Code Splitting
+### Flujo de Usuario
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. **Inicio** (`/`)
+   - Pantalla de bienvenida
+   - Clic en "ENTRAR AL SISTEMA" → Navega al mapa
 
-### Analyzing the Bundle Size
+2. **Mapa** (`/mapa`)
+   - Visualización del pueblo con 3 parques
+   - Clic en cualquier parque → Navega a detalles del parque
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+3. **Detalles del Parque** (`/parque/:parqueId`)
+   - Información completa del parque
+   - Tótem 3D interactivo
+   - Botón "ACTIVAR REALIDAD AUMENTADA" → Abre simulador AR
 
-### Making a Progressive Web App
+### Parques Disponibles
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **Parque Principal** (`/parque/principal`)
+  - 🌳 Más de 100 árboles centenarios
+  - 🦋 Jardín de mariposas nativo
+  - 🏃‍♂️ Senderos para caminar y trotar
 
-### Advanced Configuration
+- **Parque Santafé** (`/parque/santafe`)
+  - 🌹 Jardín de rosas premiado
+  - 🧘‍♀️ Área de yoga y meditación
+  - 🦆 Laguna con patos y peces
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- **Parque Recreativo** (`/parque/recreativo`)
+  - ⚽ Canchas de fútbol y básquet
+  - 🏊‍♂️ Piscina olímpica
+  - 🎢 Juegos mecánicos
 
-### Deployment
+## 🎮 Controles del Tótem 3D
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- **Rotar**: Arrastra con el mouse
+- **Zoom**: Usa la rueda del mouse
+- **Vista**: El tótem se puede observar desde todos los ángulos
 
-### `npm run build` fails to minify
+## 📱 Funcionalidad AR
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+La aplicación simula una experiencia de realidad aumentada:
+
+1. **Activación**: Toca el botón "ACTIVAR REALIDAD AUMENTADA"
+2. **Simulación de Cámara**: Se abre una interfaz que simula la cámara del dispositivo
+3. **Visor AR**: Muestra un visor con esquinas verdes para localizar el tótem
+4. **Instrucciones**: Guía al usuario para apuntar hacia el tótem físico
+5. **Experiencia Real**: En un entorno real, esto activaría la cámara para escanear tótems físicos
+
+## 🎯 Concepto de Implementación Real
+
+Esta aplicación está diseñada para funcionar con tótems físicos reales en los parques:
+
+- Los tótems mostrados en 3D representan estructuras físicas que estarían instaladas en cada parque
+- La funcionalidad AR permitiría escanear estos tótems reales con la cámara del dispositivo
+- Al escanear, se mostrarían experiencias de realidad aumentada superpuestas sobre el tótem físico
+
+## 🚀 Scripts Disponibles
+
+- `npm start`: Inicia el servidor de desarrollo
+- `npm run build`: Construye la aplicación para producción
+- `npm test`: Ejecuta las pruebas
+- `npm run eject`: Expone la configuración de webpack (irreversible)
+
+## 📱 Compatibilidad
+
+- **Navegadores**: Chrome, Firefox, Safari, Edge (versiones modernas)
+- **Dispositivos**: Desktop, tablet y móvil
+- **Resoluciones**: Responsive design desde 320px hasta 1920px+
+
+## 🎨 Personalización
+
+La aplicación es fácilmente personalizable:
+
+- **Colores**: Modifica las variables CSS en los archivos de estilos
+- **Parques**: Agrega nuevos parques editando el array en `ParkDetailScreen.js`
+- **Tótems 3D**: Personaliza los modelos 3D en el componente `Totem3D`
+- **Contenido**: Actualiza textos, imágenes y descripciones según tus necesidades
+
+¡Disfruta explorando los parques con tecnología AR! 🌳📱✨
