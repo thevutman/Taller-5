@@ -1,14 +1,58 @@
-import React, { useEffect, useRef } from 'react';
-import 'aframe';
-import '@ar-js-org/ar.js/aframe';
+import React, { useEffect, useRef, useState } from 'react';
 
 const ARScene = ({ parkData, onClose }) => {
   const sceneRef = useRef(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    // Configurar A-Frame cuando el componente se monta
+    // Cargar A-Frame y AR.js dinámicamente
+    const loadAR = async () => {
+      try {
+        // Cargar A-Frame
+        if (!window.AFRAME) {
+          const aframeScript = document.createElement('script');
+          aframeScript.src = 'https://aframe.io/releases/1.4.0/aframe.min.js';
+          aframeScript.onload = () => {
+            // Cargar AR.js después de A-Frame
+            const arScript = document.createElement('script');
+            arScript.src = 'https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.7/aframe/build/aframe-ar-nft.js';
+            arScript.onload = () => {
+              setIsLoaded(true);
+            };
+            document.head.appendChild(arScript);
+          };
+          document.head.appendChild(aframeScript);
+        } else {
+          setIsLoaded(true);
+        }
+      } catch (error) {
+        console.error('Error cargando AR:', error);
+      }
+    };
+
+    loadAR();
+
+    // Cleanup function
+    return () => {
+      // Limpiar scripts si es necesario
+      const aframeScript = document.querySelector('script[src*="aframe"]');
+      const arScript = document.querySelector('script[src*="ar.js"]');
+      
+      if (aframeScript && aframeScript.parentNode) {
+        aframeScript.parentNode.removeChild(aframeScript);
+      }
+      if (arScript && arScript.parentNode) {
+        arScript.parentNode.removeChild(arScript);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isLoaded) return;
+
     const scene = sceneRef.current;
-    
+    if (!scene) return;
+
     // Agregar event listeners para AR
     const handleMarkerFound = () => {
       console.log('¡Marcador detectado!');
@@ -18,10 +62,8 @@ const ARScene = ({ parkData, onClose }) => {
       console.log('Marcador perdido');
     };
 
-    if (scene) {
-      scene.addEventListener('markerFound', handleMarkerFound);
-      scene.addEventListener('markerLost', handleMarkerLost);
-    }
+    scene.addEventListener('markerFound', handleMarkerFound);
+    scene.addEventListener('markerLost', handleMarkerLost);
 
     return () => {
       if (scene) {
@@ -29,7 +71,22 @@ const ARScene = ({ parkData, onClose }) => {
         scene.removeEventListener('markerLost', handleMarkerLost);
       }
     };
-  }, []);
+  }, [isLoaded]);
+
+  if (!isLoaded) {
+    return (
+      <div className="ar-scene-container">
+        <div className="ar-loading">
+          <div className="loading-spinner"></div>
+          <h3>Cargando Realidad Aumentada...</h3>
+          <p>Por favor espera mientras se inicializa AR.js</p>
+          <button className="ar-close-btn" onClick={onClose}>
+            ✕ Cancelar
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="ar-scene-container">
@@ -46,6 +103,7 @@ const ARScene = ({ parkData, onClose }) => {
         embedded
         arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;"
         vr-mode-ui="enabled: false"
+        renderer="logarithmicDepthBuffer: true;"
         style={{
           width: '100%',
           height: '100vh',
@@ -60,8 +118,6 @@ const ARScene = ({ parkData, onClose }) => {
           gps-camera
           rotation-reader
           look-controls-enabled="false"
-          arjs-look-controls="smoothingFactor: 0.1"
-          arjs-device-orientation-controls="smoothingFactor: 0.1"
         />
 
         {/* Marcador AR - Usaremos un patrón Hiro por defecto */}
@@ -102,9 +158,7 @@ const ARScene = ({ parkData, onClose }) => {
               align="center"
               value={parkData.name}
               color="#FFFFFF"
-              font="dejavu"
-              geometry="primitive: plane; width: 4; height: 1"
-              material="color: #333333; opacity: 0.8"
+              width="4"
               animation="property: rotation; to: 0 360 0; loop: true; dur: 8000"
             />
             
@@ -149,9 +203,23 @@ const ARScene = ({ parkData, onClose }) => {
               height="3"
               color="#333333"
               opacity="0.8"
-              text={`align: center; value: ${parkData.description}\\n\\n${parkData.features.slice(0, 3).join('\\n')}; color: #00ff00; font: dejavu; width: 12`}
               animation="property: rotation; to: 0 5 0; dir: alternate; dur: 4000; loop: true"
-            />
+            >
+              <a-text
+                position="0 0.5 0.01"
+                align="center"
+                value={parkData.name}
+                color="#00ff00"
+                width="5"
+              />
+              <a-text
+                position="0 0 0.01"
+                align="center"
+                value="Información del Parque"
+                color="#FFFFFF"
+                width="4"
+              />
+            </a-plane>
           </a-group>
         </a-marker>
 

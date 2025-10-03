@@ -2,9 +2,9 @@ import React, { useState, useRef, Suspense, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Text, Box, Sphere, Cylinder } from '@react-three/drei';
-import ARScene from './ARScene';
+import SimpleAR from './SimpleAR';
 import './ParkDetailScreen.css';
-import './ARScene.css';
+import './SimpleAR.css';
 
 // Componente del Tótem 3D
 const Totem3D = ({ parkData }) => {
@@ -202,7 +202,7 @@ const ParkDetailScreen = () => {
       </div>
 
       {showAR && (
-        <ARScene parkData={currentPark} onClose={closeAR} />
+        <SimpleAR parkData={currentPark} onClose={closeAR} />
       )}
     </div>
   );
