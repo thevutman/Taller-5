@@ -7,6 +7,7 @@ const SimpleAR = ({ parkData, onClose }) => {
   const [isScanning, setIsScanning] = useState(false);
   const [scanProgress, setScanProgress] = useState(0);
   const [arDetected, setArDetected] = useState(false);
+  const [detectionStatus, setDetectionStatus] = useState('Buscando marcador...');
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const scanIntervalRef = useRef(null);
@@ -50,11 +51,83 @@ const SimpleAR = ({ parkData, onClose }) => {
   };
 
   const startARSimulation = () => {
-    // Simular detección de marcador después de 2 segundos
-    setTimeout(() => {
+    // Iniciar detección real de marcador
+    startMarkerDetection();
+  };
+
+  const startMarkerDetection = () => {
+    // Detectar marcador cada 500ms
+    scanIntervalRef.current = setInterval(() => {
+      detectMarker();
+    }, 500);
+  };
+
+  const detectMarker = () => {
+    if (!videoRef.current || !canvasRef.current) return;
+    
+    const video = videoRef.current;
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    
+    // Configurar canvas con el tamaño del video
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    
+    // Dibujar frame actual del video en el canvas
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    
+    // Obtener datos de imagen del centro de la pantalla
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+    const sampleSize = 150; // Área de 150x150 píxeles en el centro
+    
+    const imageData = ctx.getImageData(
+      centerX - sampleSize/2, 
+      centerY - sampleSize/2, 
+      sampleSize, 
+      sampleSize
+    );
+    const data = imageData.data;
+    
+    // Detectar patrón de marcador AR (cuadrados negros y blancos)
+    let blackPixels = 0;
+    let whitePixels = 0;
+    let totalPixels = data.length / 4;
+    
+    for (let i = 0; i < data.length; i += 4) {
+      const r = data[i];
+      const g = data[i + 1];
+      const b = data[i + 2];
+      const brightness = (r + g + b) / 3;
+      
+      if (brightness < 50) {
+        blackPixels++;
+      } else if (brightness > 200) {
+        whitePixels++;
+      }
+    }
+    
+    // Calcular porcentajes
+    const blackPercent = (blackPixels / totalPixels) * 100;
+    const whitePercent = (whitePixels / totalPixels) * 100;
+    
+    // Detectar marcador si hay suficiente contraste negro/blanco
+    const markerDetected = blackPercent > 5 && whitePercent > 5 && (blackPercent + whitePercent) > 30;
+    
+    if (markerDetected && !isScanning && !arDetected) {
+      console.log('¡Marcador detectado!', { blackPercent, whitePercent });
+      setDetectionStatus('¡Marcador detectado! Iniciando escaneo...');
       setIsScanning(true);
       startScanning();
-    }, 2000);
+    } else if (!markerDetected && isScanning) {
+      console.log('Marcador perdido');
+      setDetectionStatus('Marcador perdido. Buscando...');
+      setIsScanning(false);
+      setScanProgress(0);
+      setArDetected(false);
+    } else if (!markerDetected && !isScanning && !arDetected) {
+      setDetectionStatus('Buscando marcador...');
+    }
   };
 
   const startScanning = () => {
@@ -67,9 +140,9 @@ const SimpleAR = ({ parkData, onClose }) => {
           setIsScanning(false);
           return 100;
         }
-        return prev + Math.random() * 10 + 5;
+        return prev + Math.random() * 8 + 3;
       });
-    }, 200);
+    }, 300);
   };
 
   const handleClose = () => {
@@ -111,10 +184,20 @@ const SimpleAR = ({ parkData, onClose }) => {
         {/* Instrucciones */}
         <div className="ar-instructions">
           <h3>📱 Realidad Aumentada</h3>
-          <p>Apunta hacia el marcador AR para ver el tótem</p>
+          <p>Apunta la cámara hacia el marcador AR</p>
+          <p className="instruction-detail">
+            <strong>1.</strong> Abre el marcador en otra pantalla o imprímelo<br/>
+            <strong>2.</strong> Apunta la cámara hacia el marcador<br/>
+            <strong>3.</strong> Mantén el marcador centrado en el visor verde
+          </p>
           <a href="/ar-marker.html" target="_blank" className="marker-link">
-            📄 Ver Marcador AR
+            📄 Abrir Marcador AR
           </a>
+          
+          {/* Debug info */}
+          <div className="debug-info">
+            <small>Estado: {detectionStatus}</small>
+          </div>
         </div>
 
         {/* Visor AR */}
@@ -129,7 +212,7 @@ const SimpleAR = ({ parkData, onClose }) => {
               {!isScanning ? (
                 <div className="searching-state">
                   <div className="search-icon">🔍</div>
-                  <p>Buscando marcador AR...</p>
+                  <p>{detectionStatus}</p>
                   <div className="search-pulse"></div>
                 </div>
               ) : (
