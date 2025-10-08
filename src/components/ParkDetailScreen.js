@@ -1,70 +1,18 @@
-import React, { useState, useRef, Suspense, useEffect } from 'react';
+import React, { useState, Suspense } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Text, Box, Sphere, Cylinder } from '@react-three/drei';
+import { OrbitControls, Text } from '@react-three/drei';
+import { useGLTF } from '@react-three/drei';
 import SimpleAR from './SimpleAR';
 import './ParkDetailScreen.css';
 import './SimpleAR.css';
+import * as THREE from 'three';
 
-// Componente del Tótem 3D
-const Totem3D = ({ parkData }) => {
-  const meshRef = useRef();
+// Componente del Tótem 3D cargado desde un archivo .gl
+const Totem3D = () => {
+  const { scene } = useGLTF('/models/1.glb'); // Ruta corregida al archivo .glb
 
-  return (
-    <group ref={meshRef}>
-      {/* Base del tótem */}
-      <Cylinder args={[1.2, 1.5, 0.3]} position={[0, -2, 0]}>
-        <meshStandardMaterial color="#8B4513" />
-      </Cylinder>
-      
-      {/* Columna principal */}
-      <Cylinder args={[0.8, 0.8, 3]} position={[0, 0, 0]}>
-        <meshStandardMaterial color="#A0522D" />
-      </Cylinder>
-      
-      {/* Parte superior decorativa */}
-      <Sphere args={[0.9]} position={[0, 2, 0]}>
-        <meshStandardMaterial color="#228B22" />
-      </Sphere>
-      
-      {/* Símbolo del parque */}
-      <Text
-        position={[0, 0, 0.9]}
-        fontSize={0.8}
-        color="#FFFFFF"
-        anchorX="center"
-        anchorY="middle"
-      >
-        {parkData.icon}
-      </Text>
-      
-      {/* Texto del nombre */}
-      <Text
-        position={[0, -0.8, 0.9]}
-        fontSize={0.3}
-        color="#FFFFFF"
-        anchorX="center"
-        anchorY="middle"
-        maxWidth={3}
-      >
-        {parkData.name}
-      </Text>
-      
-      {/* Elementos decorativos */}
-      <Box args={[0.1, 0.1, 0.1]} position={[0.5, 1, 0.9]}>
-        <meshStandardMaterial color="#FFD700" />
-      </Box>
-      <Box args={[0.1, 0.1, 0.1]} position={[-0.5, 1, 0.9]}>
-        <meshStandardMaterial color="#FFD700" />
-      </Box>
-      <Box args={[0.1, 0.1, 0.1]} position={[0.5, -1, 0.9]}>
-        <meshStandardMaterial color="#FFD700" />
-      </Box>
-      <Box args={[0.1, 0.1, 0.1]} position={[-0.5, -1, 0.9]}>
-        <meshStandardMaterial color="#FFD700" />
-      </Box>
-    </group>
-  );
+  return <primitive object={scene} scale={[3, 3, 3]} />; // Escala aumentada
 };
 
 const ParkDetailScreen = () => {
@@ -75,17 +23,17 @@ const ParkDetailScreen = () => {
 
   const parksData = {
     principal: {
-      name: 'Parque Principal',
-      icon: '🌳',
+      name: 'Musica/Ritmos',
+      icon: '💃',
       description: 'El corazón verde de nuestro pueblo, donde la naturaleza y la comunidad se encuentran.',
       features: [
-        '🌲 Más de 100 árboles centenarios',
-        '🦋 Jardín de mariposas nativo',
-        '🏃‍♂️ Senderos para caminar y trotar',
-        '🎪 Área de juegos infantiles',
-        '🎭 Anfiteatro al aire libre'
+        'Originalmente la Candanga no tenía coreografía fija; se bailaba de manera espontánea y natural, descalzos o con sandalias de llanta.',
+        'Con el tiempo, se incorporaron elementos coreográficos y el uso de cotizas (calzado típico).',
+        'Un rasgo distintivo actual es el equilibrio corporal: las bailarinas cargan canastas en la cabeza, evocando a las palenqueras, lo que refuerza su vínculo con la tradición afroantillana.',
+        'La música guía el movimiento: los pasos son tranquilos, elegantes y armónicos con el compás de las cuerdas y el tambor.',
+        
       ],
-      history: 'Fundado en 1892, este parque ha sido testigo de la historia de nuestro pueblo durante más de un siglo.',
+      history: 'Nació en Santa Fe de Antioquia y se conserva en veredas como Obregón.',
       arImage: '/images/totem-principal.jpg'
     },
     santafe: {
@@ -170,9 +118,7 @@ const ParkDetailScreen = () => {
           <div className="totem-container">
             <Canvas camera={{ position: [0, 0, 8], fov: 50 }}>
               <Suspense fallback={null}>
-                <ambientLight intensity={0.5} />
-                <pointLight position={[10, 10, 10]} />
-                <Totem3D parkData={currentPark} />
+                <Totem3D />
                 <OrbitControls enableZoom={true} enablePan={false} />
               </Suspense>
             </Canvas>

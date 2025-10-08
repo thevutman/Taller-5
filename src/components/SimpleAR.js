@@ -7,6 +7,7 @@ const SimpleAR = ({ parkData, onClose }) => {
   const [isScanning, setIsScanning] = useState(false);
   const [scanProgress, setScanProgress] = useState(0);
   const [arDetected, setArDetected] = useState(false);
+  const [showVideo, setShowVideo] = useState(false); // Nuevo estado para controlar el video
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const scanIntervalRef = useRef(null);
@@ -65,6 +66,7 @@ const SimpleAR = ({ parkData, onClose }) => {
           clearInterval(scanIntervalRef.current);
           setArDetected(true);
           setIsScanning(false);
+          setShowVideo(true); // Mostrar el video al detectar el marcador
           return 100;
         }
         return prev + Math.random() * 10 + 5;
@@ -155,36 +157,48 @@ const SimpleAR = ({ parkData, onClose }) => {
               )}
             </div>
           ) : (
-            <div className="ar-detected">
-              <div className="detected-icon">✅</div>
-              <h3>¡Tótem AR Detectado!</h3>
-              
-              <div className="ar-totem">
-                <div className="totem-base"></div>
-                <div className="totem-column"></div>
-                <div className="totem-top"></div>
-                <div className="totem-text">{parkData.icon}</div>
+            showVideo ? (
+              <div className="ar-video-container">
+                <video
+                  src="/videos/Baile Candanga.mp4" // Cambia esta ruta al archivo de video
+                  autoPlay
+                  loop
+                  controls
+                  className="ar-detected-video"
+                />
               </div>
-              
-              <div className="ar-info">
-                <h4>{parkData.name}</h4>
-                <p>{parkData.description}</p>
-                <div className="ar-features">
-                  {parkData.features.slice(0, 3).map((feature, index) => (
-                    <div key={index} className="ar-feature">
-                      {feature}
-                    </div>
-                  ))}
+            ) : (
+              <div className="ar-detected">
+                <div className="detected-icon">✅</div>
+                <h3>¡Tótem AR Detectado!</h3>
+                
+                <div className="ar-totem">
+                  <div className="totem-base"></div>
+                  <div className="totem-column"></div>
+                  <div className="totem-top"></div>
+                  <div className="totem-text">{parkData.icon}</div>
+                </div>
+                
+                <div className="ar-info">
+                  <h4>{parkData.name}</h4>
+                  <p>{parkData.description}</p>
+                  <div className="ar-features">
+                    {parkData.features.slice(0, 3).map((feature, index) => (
+                      <div key={index} className="ar-feature">
+                        {feature}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                
+                <div className="floating-elements">
+                  <div className="floating-element">🌟</div>
+                  <div className="floating-element">✨</div>
+                  <div className="floating-element">🦋</div>
+                  <div className="floating-element">🌸</div>
                 </div>
               </div>
-              
-              <div className="floating-elements">
-                <div className="floating-element">🌟</div>
-                <div className="floating-element">✨</div>
-                <div className="floating-element">🦋</div>
-                <div className="floating-element">🌸</div>
-              </div>
-            </div>
+            )
           )}
         </div>
       </div>

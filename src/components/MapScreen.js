@@ -10,20 +10,20 @@ const MapScreen = () => {
     {
       id: 'principal',
       name: 'Parque Principal',
-      description: 'El corazón verde de nuestro pueblo',
+      description: 'El corazón de nuestro pueblo',
       position: { top: '30%', left: '45%' },
       icon: '🌳'
     },
     {
       id: 'santafe',
-      name: 'Parque Santafé',
+      name: 'Parque Santa Barbara',
       description: 'Un oasis de tranquilidad urbana',
       position: { top: '60%', left: '25%' },
       icon: '🌺'
     },
     {
       id: 'recreativo',
-      name: 'Parque Recreativo',
+      name: 'Parque Santa Fe',
       description: 'Diversión para toda la familia',
       position: { top: '45%', left: '70%' },
       icon: '🎪'
