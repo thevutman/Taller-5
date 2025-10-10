@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './MapScreen.css';
+// Importa el componente del mapa real
+import TotemMap from './TotemMap';
 
 const MapScreen = () => {
   const navigate = useNavigate();
@@ -53,36 +55,31 @@ const MapScreen = () => {
         </div>
       </div>
 
-      <div className="map-container">
-        <div className="map-background">
-          {/* Elementos decorativos del mapa */}
-          <div className="road road-horizontal" style={{top: '40%', left: '0%', width: '100%'}}></div>
-          <div className="road road-vertical" style={{top: '0%', left: '50%', height: '100%'}}></div>
-          <div className="building" style={{top: '15%', left: '15%'}}>🏢</div>
-          <div className="building" style={{top: '20%', left: '75%'}}>🏪</div>
-          <div className="building" style={{top: '70%', left: '60%'}}>🏫</div>
-          <div className="building" style={{top: '75%', left: '10%'}}>⛪</div>
-          
-          {/* Marcadores de parques */}
-          {parks.map((park) => (
-            <div
-              key={park.id}
-              className={`park-marker ${selectedPark === park.id ? 'selected' : ''}`}
-              style={park.position}
-              onClick={() => handleParkClick(park.id)}
-            >
-              <div className="park-icon">{park.icon}</div>
-              <div className="park-pulse"></div>
-              <div className="park-tooltip">
-                <h3>{park.name}</h3>
-                <p>{park.description}</p>
-                <span className="click-hint">👆 Toca para explorar</span>
-              </div>
-            </div>
-          ))}
-        </div>
+      {/* Reemplaza el mapa de prueba por el mapa real */}
+      <TotemMap />
+
+      {/* Botones flotantes de parques sobre el mapa */}
+      <div className="park-buttons-overlay">
+        {parks.map(park => (
+          <button
+            key={park.id}
+            className="park-button"
+            style={{
+              position: 'absolute',
+              top: park.position.top,
+              left: park.position.left,
+              transform: 'translate(-50%, -50%)',
+              zIndex: 1000
+            }}
+            title={park.name}
+            onClick={() => handleParkClick(park.id)}
+          >
+            {park.icon}
+          </button>
+        ))}
       </div>
 
+      {/* Puedes dejar la leyenda y el overlay de carga si lo necesitas */}
       <div className="map-legend">
         <div className="legend-item">
           <span className="legend-icon">🌳</span>

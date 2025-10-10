@@ -1,25 +1,25 @@
-// import React from 'react';
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-// import HomeScreen from './components/HomeScreen';
-// import MapScreen from './components/MapScreen';
-// import ParkDetailScreen from './components/ParkDetailScreen';
-// import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomeScreen from './componentss/HomeScreen';
+import MapScreen from './componentss/MapScreen';
+import ParkDetailScreen from './componentss/ParkDetailScreen';
+import './App.css';
 
-// function App() {
-//   return (
-//     <Router>
-//       <div className="App">
-//         <Routes>
-//           <Route path="/" element={<HomeScreen />} />
-//           <Route path="/mapa" element={<MapScreen />} />
-//           <Route path="/parque/:parqueId" element={<ParkDetailScreen />} />
-//         </Routes>
-//       </div>
-//     </Router>
-//   );
-// }
+function App() {
+  return (
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<HomeScreen />} />
+          <Route path="/mapa" element={<MapScreen />} />
+          <Route path="/parque/:parqueId" element={<ParkDetailScreen />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+}
 
-// export default App;
+export default App;
 
 // src/App.jsx
 // src/App.jsx (Modificado para incluir el Modo TEST_VIDEO)
@@ -129,39 +129,39 @@
 // export default App;
 
 
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import WelcomeScreen from './components/WelcomeScreen';
-import ParkMap from './components/ParkMap';
-import ParkDetail from './components/ParkDetail';
-// Importa tus componentes existentes
-import ARScanner from './componentss/ARScanner'; 
-import TotemMap from './componentss/TotemMap'; 
-import ARTestScanner from './componentss/ARTestScanner'; // Puedes quitar este si quieres, pero es útil para debug.
+// import React from 'react';
+// import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// import WelcomeScreen from './components/WelcomeScreen';
+// import ParkMap from './components/ParkMap';
+// import ParkDetail from './components/ParkDetail';
+// // Importa tus componentes existentes
+// import ARScanner from './componentss/ARScanner'; 
+// import TotemMap from './componentss/TotemMap'; 
+// import ARTestScanner from './componentss/ARTestScanner'; // Puedes quitar este si quieres, pero es útil para debug.
 
-const App = () => {
-    return (
-        <BrowserRouter>
-            <Routes>
-                {/* Nivel 0: Inicio */}
-                <Route path="/" element={<WelcomeScreen />} />
+// const App = () => {
+//     return (
+//         <BrowserRouter>
+//             <Routes>
+//                 {/* Nivel 0: Inicio */}
+//                 <Route path="/" element={<WelcomeScreen />} />
                 
-                {/* Nivel 1: Mapa y Lista */}
-                <Route path="/mapa" element={<ParkMap />} />
+//                 {/* Nivel 1: Mapa y Lista */}
+//                 <Route path="/mapa" element={<ParkMap />} />
                 
-                {/* Nivel 2: Detalle del Parque, 3D y Botón AR */}
-                <Route path="/parque/:id" element={<ParkDetail />} />
+//                 {/* Nivel 2: Detalle del Parque, 3D y Botón AR */}
+//                 <Route path="/parque/:id" element={<ParkDetail />} />
                 
-                {/* (Opcional) Rutas de prueba directa */}
-                <Route path="/ar-debug" element={<ARScanner />} />
-                <Route path="/map-debug" element={<TotemMap />} />
-                <Route path="/ar-test" element={<ARTestScanner />} />
+//                 {/* (Opcional) Rutas de prueba directa */}
+//                 <Route path="/ar-debug" element={<ARScanner />} />
+//                 <Route path="/map-debug" element={<TotemMap />} />
+//                 <Route path="/ar-test" element={<ARTestScanner />} />
 
-                {/* Ruta de fallback si no encuentra nada */}
-                <Route path="*" element={<WelcomeScreen />} />
-            </Routes>
-        </BrowserRouter>
-    );
-};
+//                 {/* Ruta de fallback si no encuentra nada */}
+//                 <Route path="*" element={<WelcomeScreen />} />
+//             </Routes>
+//         </BrowserRouter>
+//     );
+// };
 
-export default App;
+// export default App;

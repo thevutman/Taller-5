@@ -4,13 +4,14 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Text } from '@react-three/drei';
 import { useGLTF } from '@react-three/drei';
 import SimpleAR from './SimpleAR';
+import ARScanner from './ARScanner';
 import './ParkDetailScreen.css';
 import './SimpleAR.css';
 import * as THREE from 'three';
 
 // Componente del Tótem 3D cargado desde un archivo .gl
 const Totem3D = () => {
-  const { scene } = useGLTF('/models/1.glb'); // Ruta corregida al archivo .glb
+  const { scene } = useGLTF('/models/totem.glb'); // Ruta corregida al archivo .glb
 
   return <primitive object={scene} scale={[3, 3, 3]} />; // Escala aumentada
 };
@@ -148,7 +149,10 @@ const ParkDetailScreen = () => {
       </div>
 
       {showAR && (
-        <SimpleAR parkData={currentPark} onClose={closeAR} />
+        <div className="ar-modal">
+          <button className="close-ar" onClick={closeAR}>✖ Cerrar AR</button>
+          <ARScanner />
+        </div>
       )}
     </div>
   );
