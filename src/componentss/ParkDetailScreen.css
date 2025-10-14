@@ -86,17 +86,14 @@
 }
 
 .park-description,
-.park-features,
-.park-history {
+.park-features{
   margin-bottom: 25px;
 }
 
 .totem-section {
-  background: rgba(255,255,255,0.1);
   border-radius: 20px;
   padding: 30px;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.2);
 }
 
 .totem-section h2 {
@@ -570,6 +567,31 @@
 .ar-close:hover {
   background: rgba(255,71,87,0.2);
   color: white;
+}
+
+.ar-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-ar {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  background: #f44336;
+  color: white;
+  border: none;
+  font-size: 1.2em;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 10001;
 }
 
 @keyframes arPulse {
