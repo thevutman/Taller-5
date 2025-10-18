@@ -1,0 +1,19 @@
+// src/components/Shared/Button/Button.scss
+@import '../../../scss/variables';
+@import '../../../scss/mixins';
+
+.custom-button {
+    background-color: $color-primary;
+    color: $color-white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%; // Ocupa todo el ancho del contenedor
+
+    &:hover {
+        background-color: darken($color-primary, 10%); // Función de Sass para oscurecer al pasar el mouse
+    }
+}

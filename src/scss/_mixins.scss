@@ -1,0 +1,9 @@
+// src/scss/_mixins.scss
+
+@mixin card-shadow {
+    background: $color-white;
+    border-radius: 15px; // Bordes redondeados agresivos
+    box-shadow: $shadow-soft;
+    padding: 20px;
+    margin-bottom: 20px;
+}

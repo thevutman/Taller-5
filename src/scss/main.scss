@@ -1,0 +1,28 @@
+// src/scss/main.scss
+
+// 1. IMPORTAR PARCIALES
+@use 'variables';
+@use 'mixins';
+
+// 2. ESTILOS BASE (Reseteo suave)
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: variables.$font-family-base;
+    font-size: variables.$body-text;
+    background-color: variables.$color-background;
+    color: variables.$color-text;
+}
+
+// 3. ESTILOS GLOBALES DE LA APLICACIÓN
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // padding: 20px 0; // Padding general para simular el móvil
+}
