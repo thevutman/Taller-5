@@ -1,13 +1,12 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import WelcomeScreen from './components/WelcomeScreen/WelcomeScreen';
+import Liborio from './components/WelcomeScreen/Liborio';
+import MapScreen from './components/MapScreen/MapScreen';
 
 const App = () => {
   return (
     <div className="App-Container">
       {/* Por ahora, mostramos solo la WelcomeScreen para probar Sass */}
-      <WelcomeScreen />
+      <MapScreen />
       
       {/* Aquí iría el router en el futuro */}
     </div>
