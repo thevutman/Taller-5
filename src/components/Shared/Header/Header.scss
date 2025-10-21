@@ -1,0 +1,41 @@
+@use '../../../scss/variables' as vars;
+@use '../../../scss/mixins' as mixins;
+
+.Header {
+  padding: 1rem 1.2rem;
+  width: 100%;
+
+  &__container {
+    // display: flex;
+    // align-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+
+    i {
+        font-size: vars.$title;
+        color: vars.$color-text;
+        cursor: pointer;
+    }
+  }
+
+  &__title {
+    width: 90%;
+    font-size: vars.$title;
+    text-align: center;
+    color: vars.$color-text;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    left: 0;
+    background-color: vars.$color-border;
+    margin-top: 1rem;
+  }
+}

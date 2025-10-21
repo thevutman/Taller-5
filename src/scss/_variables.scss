@@ -5,13 +5,15 @@ $color-primary: #7B68EE;       // Morado de los botones de Experiencia
 $color-secondary: #FF5733;     // Un color de acento (si es necesario)
 $color-text: #333333;          // Texto oscuro
 $color-background: #ffffff;    // Fondo limpio (ligeramente gris)
-$color-white: #ffffff;
+$color-white: #DBDBDB;
+
+$color-border: #080808;        // Bordes suaves y líneas divisorias
 
 // TIPOGRAFÍA
 $font-family-base: 'Kantumruy Pro', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-$title: 28px;
-$subtitle: 20px;
-$body-text: 18px;
+$title: 2.8rem;
+$subtitle: 2rem;
+$body-text: 1.8rem;
 
 // SOMBRAS (para replicar las tarjetas de Figma)
 $shadow-soft: 0 4px 10px rgba(0, 0, 0, 0.1);

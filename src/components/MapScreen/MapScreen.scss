@@ -1,4 +1,5 @@
 @use '../../scss/variables' as vars;
+@use '../../scss/mixins' as mixins;
 
 .MapScreen {
     &__container {
@@ -6,115 +7,108 @@
         justify-content: center;
         min-height: 100vh;
         background: if(vars.$color-background, vars.$color-background, #f5f5f5);
-        padding: 20px;
+        max-width: 425px;
     }
 
     &__card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
         width: 100%;
+        height: 100%;
         max-width: 920px;
         padding: 24px;
-    }
-
-    &__header {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        margin-bottom: 30px;
-    }
-
-    &__backButton {
-        width: 40px;
-        height: 40px;
-        border: none;
-        background: #fff;
-        border-radius: 50%;
-        cursor: pointer;
-        font-size: 20px;
-    }
-
-    &__title {
-        margin: 0;
-        font-size: 24px;
+        box-sizing: border-box;
     }
 
     &__content {
-        text-align: center;
+        display: flex;
+        flex-direction: column;
+        padding: 1.2rem;
     }
 
     &__subtitle {
-        color: #000;
-        font-size: 32px;
+        color: vars.$color-text;
+        font-size: vars.$subtitle;
+        font-weight: 600;
         margin-bottom: 10px;
     }
 
     &__subtitle2 {
-        color: #666;
-        font-size: 24px;
-        margin-bottom: 30px;
+        color: vars.$color-text;
+        font-size: vars.$subtitle;
+        font-weight: 600;
+        margin-bottom: 10px;
     }
 
     &__locations {
-        display: grid;
-        gap: 20px;
-        padding: 0 20px;
+        display: flex;
     }
 
     &__mapPreview {
-    border-radius: 12px;
-    height: 60px; // Cambiar de porcentaje a píxeles
-    margin: 20px auto;
-    width: 80%;
-    background-color: #808080;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        /* Asegura que el contenedor tenga una altura concreta; ajústala según diseño */
+        height: 360px;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 8px;
+
+        @include mixins.card-shadow();
+    }
+
+    &__location-iconContainer {
+        width: 30%;
+        height: 100%;
+        border-radius: 8px;
+    }
+    
+    &__location-info {
+        display: flex;
+        flex-direction: column;
+        width: 70%;
     }
 
     &__locationCard {
-        background: gray;
-        border-radius: 12px;
-        padding: 20px;
-        text-align: center;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        width: 100%; // Cambiado de 10% a 100%
-        max-width: 400px;
-        margin: 0 auto;
+        width: 100%;
         display: flex;
+        gap: 16px;
 
         
         h4 {
-            font-size: 20px;
-            margin: 15px 0;
+            font-size: vars.$body-text;
+            font-weight: 500;
+            color: vars.$color-text;
         }
 
         p {
-            color: #666;
-            margin-bottom: 20px;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: vars.$color-text;
+            margin: 4px 0 12px 0;
         }
 
         &__location-icon {
-            width: 50px;
-            height: 50px;
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;   
             border-radius: 8px;
-            margin: 0 auto 15px;
         }
 
+        @include mixins.card-shadow(); 
         
     }
+
     &__locationButtons {
             display: flex;
             gap: 10px;
             justify-content: space-between;
     }
      &__btnMapa {
-            background-color: blue;
+            @include mixins.button-style--variant();
         }
 
         &__btnExperiencia {
-            background: #007AFF;
-            color: blue;
-            gap: 20%;
+            @include mixins.button-style();
         }
 }
 
@@ -122,4 +116,10 @@
     .MapScreen__locations {
         grid-template-columns: repeat(2, 1fr);
     }
+}
+
+/* Opcional: clase para TotemMap wrapper (si quieres más control) */
+.TotemMap__wrapper {
+  width: 100%;
+  height: 100%;
 }

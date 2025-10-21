@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import { welcomeSlides } from '../../data/WelcomeSlides';
-//import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './WelcomeScreen.scss';
 
 export default function WelcomeScreen({ onStart }) {
     const [slideIndex, setSlideIndex] = useState(0);
     const slide = welcomeSlides[slideIndex];
-    /*const Navigate = useNavigate();
+    const navigate = useNavigate();
+
     const handleStart = () => {
-      Navigate('/Liborio');
       if (typeof onStart === 'function') onStart();
-    }*/
+      navigate('/liborio'); // <-- asegúrate que coincide con la ruta en App.jsx
+    };
 
     return (
         <div className="welcome-screen__container">
@@ -57,9 +58,7 @@ export default function WelcomeScreen({ onStart }) {
                 {slide.showButton && (
                   <button
                       className="welcome-screen__primary"
-                      onClick={() => {
-                          if (typeof onStart === 'function') onStart();
-                      }}
+                      onClick={handleStart}
                   >
                       {slide.buttonText || 'Comenzar'}
                   </button>
@@ -115,7 +114,7 @@ export default function WelcomeScreen({ onStart }) {
                 {slide.showButton && (
                   <button
                       className="welcome-screen__primary"
-                      //onClick={handleStart}
+                      onClick={handleStart}
                   >
                       {slide.buttonText || 'Comenzar'}
                   </button>

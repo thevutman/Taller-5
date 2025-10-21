@@ -1,14 +1,17 @@
+import { Routes, Route, Navigate } from 'react-router-dom';
 import WelcomeScreen from './components/WelcomeScreen/WelcomeScreen';
-import Liborio from './components/WelcomeScreen/Liborio';
 import MapScreen from './components/MapScreen/MapScreen';
+import Liborio from './components/Liborio/Liborio';
 
 const App = () => {
   return (
     <div className="App-Container">
-      {/* Por ahora, mostramos solo la WelcomeScreen para probar Sass */}
-      <MapScreen />
-      
-      {/* Aquí iría el router en el futuro */}
+      <Routes>
+        <Route path="/" element={<WelcomeScreen />} />
+        <Route path="/map" element={<MapScreen />} />
+        <Route path="/liborio" element={<Liborio />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
     </div>
   );
 };

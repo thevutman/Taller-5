@@ -1,4 +1,5 @@
 // src/scss/_mixins.scss
+@use 'variables' as *;
 
 @mixin card-shadow {
     background: $color-white;
@@ -6,4 +7,41 @@
     box-shadow: $shadow-soft;
     padding: 20px;
     margin-bottom: 20px;
+}
+
+@mixin button-style {
+    background-color: $color-primary;
+    color: $color-white;
+    font-family: $font-family-base;
+    font-size: 1.4rem;
+    width: 50%;
+    height: 36px;
+    // padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: darken($color-primary, 10%);
+    }
+}
+
+@mixin button-style--variant {
+    background-color: transparent;
+    color: $color-text;
+    border: 2px solid $color-primary;
+    font-family: $font-family-base;
+    font-size: 1.4rem;
+    width: 50%;
+    height: 36px;
+    // padding: 0px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: $color-primary;
+        color: $color-white;
+    }
 }
