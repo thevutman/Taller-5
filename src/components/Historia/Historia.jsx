@@ -1,49 +1,58 @@
 import "./Historia.scss"
 import Logo from "../../assets/Logo.png"
+import video from "../../assets/videoHistoriaCandanga.mp4"
 import { useNavigate } from "react-router-dom"
 
 
 export default function HistoriaPage() {
-    const navigate = useNavigate()
+  const navigate = useNavigate()
   const historiaItems = [
     {
       title: "Totem Candanga",
-      subtitle: "Orígenes",
-      description: "Descubre los orígenes ancestrales de La Candanga en la tradición bogotana.",
+      subtitle: "Musica y ritmo",
+      description: "Entra en la inmersion de la candanga explorando los bailes tradicionales mediante esta experiencia.",
       
     },
     {
       title: "Totem Candanga",
-      subtitle: "Vestimenta",
-      description: "Conoce el significado de cada elemento del traje tradicional.",
+      subtitle: "Orignes",
+      description: "Entra en la inmersion de la candanga explorando los bailes tradicionales mediante esta experiencia",
     },
     {
       title: "Totem Candanga",
-      subtitle: "Música y Danza",
-      description: "Explora los ritmos y bailes que acompañan esta tradición.",
+      subtitle: "Vestimenta",
+      description: "Entra en la inmersion de la candanga explorando los bailes tradicionales mediante esta experiencia",
     },
   ]
 
   return (
     <div className="historia">
-      {/* Header */}
-      <header className="historia__header">
-        <button onClick={() => navigate("/intro")}>
-          back
-        </button>
-        <div className="historia__header-logo">
-            <img src={Logo} alt="Logo Retumbó" />
+      <header className='historia__header'> 
+        <div className="historia__header-logo" onClick={() => navigate("/")}>
+          <img src={Logo} alt="Logo"/>
         </div>
+        <h1 className='historia__header-title'>La Candanga</h1>
       </header>
 
       {/* Contenido */}
       <main className="historia__main">
         <h1 className="historia__title">Nuestra historia</h1>
 
+        {/* Video debajo del título */}
+        <div className="historia__video-wrap">
+          <video
+            src={video}
+            className="historia__video"
+            controls
+            playsInline
+            preload="metadata"
+          />
+        </div>
+
         {/* Cards de historia */}
         <div className="historia__list">
           {historiaItems.map((item, index) => (
-              <div className="historia__card">
+              <div className="historia__card" key={index}>
                 <div className="historia__card-content">
                   <div className="historia__card-icon">{item.icon}</div>
                   <div className="historia__card-info">

@@ -1,51 +1,36 @@
 @use '../../scss/variables' as vars;
 
 .historia {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
 
   &__header {
-    padding: 1rem;
+    background-color: vars.$color-secondary;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    padding: 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  }
-
-  &__header-back {
+    width: 100%;
+    height: 12%;
     color: white;
-  }
 
-  &__header-title {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
+    &-logo {
+      width: 26%;
 
-  &__header-logo {
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+      img {
+        width: 100%;
+      }
+    }
 
-  &__header-logo-text {
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: #fef3c7;
-  }
-
-  &__header-text {
-    color: white;
-    font-weight: 700;
-    font-size: 1.125rem;
-  }
-
-  &__header-spacer {
-    width: 2.5rem;
+    &-title {
+      width: 66%;
+      font-size: 2.8rem;
+      font-weight: bold;
+    }
   }
 
   &__main {
