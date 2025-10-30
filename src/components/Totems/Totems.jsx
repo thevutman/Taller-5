@@ -74,11 +74,39 @@
 //   )
 // }
 
+// import React from 'react'
+
+
+// function Totems() {
+//   return (
+//     <div>
+//       <div className='totem'>Tótem de la Música - La Candanga
+      
+//       <model-viewer
+//           src="../../assets/totem_musica.glb"
+//           alt="Un modelo 3D de un robot"
+//           auto-rotate
+//           camera-controls
+//           shadow-intensity="1"
+//           style="width: 100%; height: 500px;"
+//       ></model-viewer>
+//       </div>
+//     </div>
+//   )
+// }
+
+// export default Totems
+
 import React from 'react'
 
 function Totems() {
   return (
-    <div>Totems</div>
+    <div>
+      hola
+      <model-viewer
+          src="../../assets/totem_musica.glb"
+          ></model-viewer>
+    </div>
   )
 }
 
