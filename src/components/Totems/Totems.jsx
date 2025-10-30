@@ -104,8 +104,17 @@ function Totems() {
     <div>
       hola
       <model-viewer
-          src="../../assets/totem_musica.glb"
-          ></model-viewer>
+        src="/totem_musica.glb"
+        alt="Tótem 3D"
+        poster="/models/totem_musica.webp"
+        ar
+        ar-modes="scene-viewer quick-look webxr"
+        // environment-image="/environments/moon_1k.hdr"
+        camera-controls
+        auto-rotate
+        shadow-intensity="1"
+        style={{ width: '100%', height: '500px' }}
+      ></model-viewer>
     </div>
   )
 }
