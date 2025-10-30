@@ -18,35 +18,36 @@ function Intro() {
 
             {/* Contenido principal */}
             <main className="intro-container__main">
-                {/* Imagen principal */}
+                <p className='intro-container__main__title'>La Candanga</p>
                 <div className="intro-container__main__image" onClick={() => navigate("/Historia")}>
                     <img src={Candanga} alt="Candanga de Obregón" />
                 </div>
+            </main>
 
-                {/* Iconos de navegación */}
-                <div className="intro-container__main__icons">
-                    <div className="intro-container__main__icon">
+            <nav className="intro-container__nav">
+                <div className="intro-container__nav__icons">
+                    <div className="intro-container__nav__icon">
                         <div onClick={() => navigate('/Logros')}>
                             <img src={Logros} alt="Mapa" className="w-8 h-8" />
                             <span>Logros</span>
                         </div>
                     </div>
 
-                    <div className="intro-container__main__icon">
+                    <div className="intro-container__nav__icon">
                         <div onClick={() => navigate('/Mapa')}>
                             <img src={Mapa} alt="Mapa" className="w-8 h-8" />
                             <span>Mapa</span>
                         </div>
                     </div>
 
-                    <div className="intro-container__main__icon">
+                    <div className="intro-container__nav__icon intro-container__nav__icon--center">
                         <div onClick={() => navigate('/Totems')}>
                             <img src={Totems} alt="Totems" className="w-8 h-8" />
                             <span>Totems</span>
                         </div>
                     </div>
                 </div>
-            </main>
+            </nav>
 
         </div>
     )

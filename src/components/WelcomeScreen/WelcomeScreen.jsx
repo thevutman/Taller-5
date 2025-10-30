@@ -14,22 +14,19 @@ export default function WelcomeScreen({ onStart }) {
     return (
         <div className="welcome-screen">
             <div className="welcome-screen__container">
-                {/* Logo Retumbó */}
                 <div className="welcome-screen__container__logo">
                     <img src={Logo} alt="Logo Retumbó" className="welcome-screen__container__logo__image" />
                 </div>
-
-                {/* Texto descriptivo */}
-                <div className="welcome-screen__container__description">
-                    <p className="">
-                        Explora la esencia de Santa Fe de Antioquia. Descubre el Bunde. Conoce la Candanga de Obregón. Vive a Los Diablitos.
-                    </p>
+                <div className="welcome-screen__container-content">
+                    <div className="welcome-screen__container__description">
+                        <p className="">
+                            Explora la esencia de Santa Fe de Antioquia. Descubre el Bunde. Conoce la Candanga de Obregón. Vive a Los Diablitos.
+                        </p>
+                    </div>
+                    <button className="welcome-screen__container__button" onClick={handleStart}>
+                        Comenzar
+                    </button>
                 </div>
-
-                {/* Botón Comenzar */}
-                <button className="welcome-screen__container__button" onClick={handleStart}>
-                    Comenzar
-                </button>
             </div>
         </div>
     );
