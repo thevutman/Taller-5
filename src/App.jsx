@@ -8,7 +8,7 @@ import HistoriaPage from './components/Historia/Historia';
 
 const App = () => {
   return (
-    <div className="App-Container">
+    <div className="App-Container" style={{ width: '100vw', maxWidth: '500px', overflow: 'hidden' }}>
       <Routes>
         <Route path="/" element={<WelcomeScreen />} />
         <Route path="/Intro" element={<Intro />} />

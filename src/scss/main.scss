@@ -32,3 +32,9 @@ body {
     align-items: center;
     // padding: 20px 0; // Padding general para simular el móvil
 }
+
+.app-container {
+    width: 100%;
+    max-width: 400px; // Ancho máximo para simular el móvil
+    overflow: hidden;
+}

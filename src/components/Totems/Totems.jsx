@@ -99,14 +99,17 @@
 
 import React from 'react'
 import './Totems.scss';
+import Totem from '../../assets/Totems.png';
 
 function Totems() {
   return (
     <div className='totem'> 
-      <div className='totem__header'>
-        Totems
-        <div className='totem__header-logo'></div>
-      </div>
+      <header className='totem__header'> 
+        <div className="totem__header-logo">
+          <img src={Totem} alt="Logo Tótem"/>
+        </div>
+        <h1 className='totem__header-title'>Totems</h1>
+      </header>
       <div className='totem__content'>
         <div className='totem__title'>Candanga</div>
         <div className='totem__subtitle'>Musica</div>
