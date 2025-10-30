@@ -18,7 +18,9 @@ html{
 body {
     font-family: variables.$font-family-base;
     font-size: variables.$body-text;
-    background-color: variables.$color-background;
+    background-image: url(../assets/background.png);
+    background-size: cover;
+    background-attachment: fixed;
     color: variables.$color-text;
 }
 

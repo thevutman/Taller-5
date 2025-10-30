@@ -1,0 +1,85 @@
+// import Link from "next/link"
+// import { ArrowLeft, Home, Info, Music, Trophy } from "lucide-react"
+// import { Button } from "@/components/ui/button"
+// import "./totem.scss"
+
+// const totemData = [
+//   {
+//     title: "Candanga",
+//     subtitle: "Música/Ritmo",
+//     description:
+//       "El ritmo de La Candanga representa el latido del corazón de Bogotá, con tambores que resuenan en las calles coloniales.",
+//     color: "bg-orange-600",
+//   },
+//   {
+//     title: "Candanga",
+//     subtitle: "Orígenes",
+//     description:
+//       "Los orígenes de La Candanga se remontan a las tradiciones indígenas y españolas que se fusionaron en Santa Fe.",
+//     color: "bg-red-700",
+//   },
+//   {
+//     title: "Candanga",
+//     subtitle: "Vestimenta",
+//     description:
+//       "La vestimenta tradicional incluye máscaras talladas, trajes coloridos y elementos que representan la dualidad del bien y el mal.",
+//     color: "bg-amber-700",
+//   },
+// ]
+
+// export default async function TotemPage({ params }: { params: Promise<{ id: string }> }) {
+//   const { id } = await params
+//   const totemIndex = Number.parseInt(id)
+//   const totem = totemData[totemIndex] || totemData[0]
+
+//   return (
+//     <div className="totem">
+//       {/* Header */}
+//       <header className="totem__header">
+//         <Link href="/historia">
+//           <Button variant="ghost" size="icon" className="totem__header-back">
+//             <ArrowLeft className="totem__icon" />
+//           </Button>
+//         </Link>
+//         <div className="totem__header-title">
+//           <div className="totem__header-logo">
+//             <span className="totem__header-logo-text">R</span>
+//           </div>
+//           <span className="totem__header-text">Totems</span>
+//         </div>
+//         <div className="totem__header-spacer" />
+//       </header>
+
+//       {/* Contenido */}
+//       <main className="totem__main">
+//         {/* Título */}
+//         <div className="totem__title-section">
+//           <h1 className="totem__title">{totem.title}</h1>
+//           <p className="totem__subtitle">{totem.subtitle}</p>
+//         </div>
+
+//         {/* Totem */}
+//         <div className="totem__image-container">
+//           <div className="totem__image-wrapper">
+//             <img src="/colombian-totem-pole-carved-wood.jpg" alt="Totem" className="totem__image" />
+//           </div>
+//         </div>
+
+//         {/* Descripción */}
+//         <div className="totem__description">
+//           <p className="totem__description-text">{totem.description}</p>
+//         </div>
+//       </main>
+//     </div>
+//   )
+// }
+
+import React from 'react'
+
+function Totems() {
+  return (
+    <div>Totems</div>
+  )
+}
+
+export default Totems

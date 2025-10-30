@@ -1,15 +1,21 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import WelcomeScreen from './components/WelcomeScreen/WelcomeScreen';
-import MapScreen from './components/MapScreen/MapScreen';
-import Liborio from './components/Liborio/Liborio';
+import Intro from './components/Intro/Intro';
+import Logros from './components/Logros/Logros';
+import Mapa from './components/Mapa/Mapa';
+import Totems from './components/Totems/Totems';
+import HistoriaPage from './components/Historia/Historia';
 
 const App = () => {
   return (
     <div className="App-Container">
       <Routes>
         <Route path="/" element={<WelcomeScreen />} />
-        <Route path="/map" element={<MapScreen />} />
-        <Route path="/liborio" element={<Liborio />} />
+        <Route path="/Intro" element={<Intro />} />
+        <Route path="/Historia" element={<HistoriaPage />} />
+        <Route path="/Logros" element={<Logros />} />
+        <Route path="/Mapa" element={<Mapa />} />
+        <Route path="/Totems" element={<Totems />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>
