@@ -2,6 +2,7 @@ import "./Historia.scss"
 import Logo from "../../assets/Logo.png"
 import { useNavigate } from "react-router-dom"
 
+
 export default function HistoriaPage() {
     const navigate = useNavigate()
   const historiaItems = [
@@ -9,6 +10,7 @@ export default function HistoriaPage() {
       title: "Totem Candanga",
       subtitle: "Orígenes",
       description: "Descubre los orígenes ancestrales de La Candanga en la tradición bogotana.",
+      
     },
     {
       title: "Totem Candanga",
