@@ -98,12 +98,19 @@
 // export default Totems
 
 import React from 'react'
+import './Totems.scss';
 
 function Totems() {
   return (
-    <div>
-      hola
-      <model-viewer
+    <div className='totem'> 
+      <div className='totem__header'>
+        Totems
+        <div className='totem__header-logo'></div>
+      </div>
+      <div className='totem__content'>
+        <div className='totem__title'>Candanga</div>
+        <div className='totem__subtitle'>Musica</div>
+      <model-viewer 
         src="/totem_musica.glb"
         alt="Tótem 3D"
         poster="/models/totem_musica.webp"
@@ -113,8 +120,9 @@ function Totems() {
         camera-controls
         auto-rotate
         shadow-intensity="1"
-        style={{ width: '100%', height: '500px' }}
+        style={{ width: '100%', height: '100%' }}
       ></model-viewer>
+      </div>
     </div>
   )
 }
