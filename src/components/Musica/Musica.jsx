@@ -1,11 +1,11 @@
 import React from 'react'
-import './Mapa.scss';
+import './Musica.scss';
 
 import Logo from '../../assets/Logo.png';
 import Totems from '../../assets/Totems_Musica.png';
 
 
-function Mapa() {
+function Musica() {
   return (
       <div className='totem'> 
         <header className='totem__header'> 
@@ -44,4 +44,4 @@ function Mapa() {
     )
 }
 
-export default Mapa
+export default Musica
