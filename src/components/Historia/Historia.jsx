@@ -2,6 +2,9 @@ import "./Historia.scss"
 import Logo from "../../assets/Logo.png"
 import video from "../../assets/videoHistoriaCandanga.mp4"
 import { useNavigate } from "react-router-dom"
+import musica from "../../assets/01.png"
+import origenes from "../../assets/02.png"
+import vestimenta from "../../assets/03.png"
 
 
 export default function HistoriaPage() {

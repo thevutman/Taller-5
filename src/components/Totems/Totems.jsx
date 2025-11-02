@@ -99,7 +99,7 @@
 
 import React from 'react'
 import './Totems.scss';
-import useNavigate from 'react-router-dom';
+import { useNavigate } from "react-router-dom"
 import Totem from '../../assets/Totems.png';
 
 function Totems() {
