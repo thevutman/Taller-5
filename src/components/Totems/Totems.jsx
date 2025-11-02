@@ -99,15 +99,15 @@
 
 import React from 'react'
 import './Totems.scss';
-import useNavigate from 'react-router-dom';
+
 import Totem from '../../assets/Totems.png';
 
 function Totems() {
-  navigate = useNavigate();
+  
   return (
     <div className='totem'> 
       <header className='totem__header'> 
-        <div className="totem__header-logo" onClick={() => navigate("/")}>
+        <div className="totem__header-logo" >
           <img src={Totem} alt="Logo Tótem"/>
         </div>
         <h1 className='totem__header-title'>Totems</h1>

@@ -16,6 +16,7 @@ const App = () => {
         <Route path="/Logros" element={<Logros />} />
         <Route path="/Mapa" element={<Mapa />} />
         <Route path="/Totems" element={<Totems />} />
+        
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>
