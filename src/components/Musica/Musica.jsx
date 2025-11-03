@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import './Musica.scss';
 
 import Logo from '../../assets/Logo.png';
@@ -6,10 +7,11 @@ import Totems from '../../assets/Totems_Musica.png';
 
 
 function Musica() {
+  const navigate = useNavigate();
   return (
       <div className='totem'> 
         <header className='totem__header'> 
-          <div className="totem__header-logo" >
+          <div className="totem__header-logo" onClick={() => navigate("/intro")}>
             <img src={Logo} alt="Logo Tótem"/>
           </div>
           <h1 className='totem__header-title'>La candanga</h1>

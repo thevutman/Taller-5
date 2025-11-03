@@ -103,11 +103,11 @@ import { useNavigate } from "react-router-dom"
 import Totem from '../../assets/Totems.png';
 
 function Totems() {
-  
+  const navigate = useNavigate();
   return (
     <div className='totem'> 
       <header className='totem__header'> 
-        <div className="totem__header-logo" >
+        <div className="totem__header-logo" onClick={() => navigate("/intro")}>
           <img src={Totem} alt="Logo Tótem"/>
         </div>
         <h1 className='totem__header-title'>Totems</h1>

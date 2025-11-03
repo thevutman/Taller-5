@@ -5,6 +5,7 @@ import Logros from './components/Logros/Logros';
 import Mapa from './components/Mapa/Mapa';
 import Totems from './components/Totems/Totems';
 import HistoriaPage from './components/Historia/Historia';
+import Musica from './components/Musica/Musica';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/Intro" element={<Intro />} />
         <Route path="/Historia" element={<HistoriaPage />} />
         <Route path="/Logros" element={<Logros />} />
+        <Route path="/Musica" element={<Musica />} />
         <Route path="/Mapa" element={<Mapa />} />
         <Route path="/Totems" element={<Totems />} />
         
