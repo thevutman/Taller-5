@@ -6,6 +6,7 @@ import Mapa from './components/Mapa/Mapa';
 import Totems from './components/Totems/Totems';
 import HistoriaPage from './components/Historia/Historia';
 import Musica from './components/Musica/Musica';
+import Ar from './components/AR/ARExperience';
 
 const App = () => {
   return (
@@ -17,7 +18,9 @@ const App = () => {
         <Route path="/Logros" element={<Logros />} />
         <Route path="/Musica" element={<Musica />} />
         <Route path="/Mapa" element={<Mapa />} />
+        <Route path="/ar/musica" element={<Ar />} />
         <Route path="/Totems" element={<Totems />} />
+
         
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
