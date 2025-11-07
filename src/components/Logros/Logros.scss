@@ -4,6 +4,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow: scroll;
 
   &__header {
     background-color: vars.$color-secondary;
