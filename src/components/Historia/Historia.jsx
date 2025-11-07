@@ -20,7 +20,7 @@ export default function HistoriaPage() {
     {
       icon: <img src={origenes} alt="Orígenes" />,
       title: "Totem Candanga",
-      subtitle: "Orignes",
+      subtitle: "Origenes",
       description: "Entra en la inmersion de la candanga explorando los bailes tradicionales mediante esta experiencia",
       button: <button className="historia__card-button">Experiencia</button>,
     },

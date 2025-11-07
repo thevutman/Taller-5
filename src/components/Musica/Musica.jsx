@@ -32,9 +32,9 @@ function Musica() {
         ></model-viewer>
       </div>
 
-      <div className='totem__subtitle'>
+      {/* <div className='totem__subtitle'>
         <div className='totem__text'>Subele el volumen a tu telefono para que puedas escuchar la descripcion del totem</div>
-      </div>
+      </div> */}
 
       <div className='totem__imagenTotemsContainer'>
         <img src={Totems} alt="Imagen Totems" className='totem__imagenTotems' />

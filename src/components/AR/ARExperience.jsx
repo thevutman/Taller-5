@@ -206,7 +206,7 @@ export default function ARExperience() {
               </a-assets>
 
               <a-marker type="pattern" url={markerUrl} ref={markerRef} emitevents="true">
-                <a-video src="#ar-video" width="3px" height="3px" objectFit="contain" position="0 0 0" rotation="-90 0 0" visible="false" muted/>
+                <a-video src="#ar-video" width="3px" height="3px" objectFit="contain" position="0 0 0" rotation="-90 0 0" visible="false"/>
               </a-marker>
 
               <a-entity camera />
