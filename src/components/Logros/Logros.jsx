@@ -5,6 +5,7 @@ import "./Logros.scss"
 import candelio from '../../assets/candelio.png'
 import origenes from '../../assets/origenes.png'
 import vestimenta from '../../assets/vestimenta.png'
+import Logros from '../../assets/Logros.png';
 
 export default function LogrosPage() {
   const navigate = useNavigate()
@@ -20,20 +21,15 @@ export default function LogrosPage() {
 
   return (
     <div className="logros">
-      {/* Header */}
-      <header className="logros__header">
-        <button onClick={() => navigate("/intro")}>
-          back
-        </button>
-        <div className="logros__header-logo">
-          <img src={Logo} alt="Logo Retumbó" />
+      <header className='logros__header'> 
+        <div className="logros__header-logo" onClick={() => navigate("/intro")}>
+          <img src={Logros} alt="Logo Logros"/>
         </div>
+        <h1 className='logros__header-title'>Logros</h1>
       </header>
 
       {/* Contenido */}
       <main className="logros__main">
-        <h1 className="logros__title">Logros</h1>
-
         {/* Lista de logros */}
         <div className="logros__list">
           {/* Logro 1: Candela */}

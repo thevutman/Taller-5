@@ -5,8 +5,7 @@ import L, { divIcon, geoJSON as leafletGeoJSON } from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 
 import './Mapa.scss'
-
-import Logo from '../../assets/Logo.png'
+import LMapa from '../../assets/Mapa.png'
 import totemsGeojsonUrl from '../../data/totems.geojson?url'
 
 const INITIAL_CENTER = [6.555143, -75.823926]
@@ -239,27 +238,15 @@ function Mapa () {
   }
 
   return (
-    <div className='pokemon-map'>
-      <header className='pokemon-map__header'>
-        <div className='pokemon-map__logo'>
-          <img src={Logo} alt='Logo Parque Explora' />
+    <div className='map'>
+      <header className='map__header'> 
+        <div className="map__header-logo" onClick={() => navigate("/intro")}>
+          <img src={LMapa} alt="Logo Mapa"/>
         </div>
-        <div className='pokemon-map__trainerCard'>
-          <span className='pokemon-map__trainerLabel'>Entrenador</span>
-          <strong className='pokemon-map__trainerName'>Explorador Candanga</strong>
-        </div>
+        <h1 className='map__header-title'>Mapa</h1>
       </header>
 
-      <main className='pokemon-map__body'>
-        <div className='pokemon-map__titleBlock'>
-          <h1>Explora los tótems</h1>
-          <p>Captura experiencias mientras caminas por el parque. Sigue la ruta brillante para encontrarlos.</p>
-        </div>
-
-        <div className='pokemon-map__mapShell'>
-          <div className='pokemon-map__radarOverlay' />
-          <div className='pokemon-map__scanline' />
-
+      <main className='map__body'>
           <MapContainer
             className='pokemon-map__leaflet'
             center={INITIAL_CENTER}
@@ -298,20 +285,6 @@ function Mapa () {
               </Marker>
             )}
           </MapContainer>
-        </div>
-
-        <section className='pokemon-map__statusPanel'>
-          <div className='pokemon-map__statusBubble'>
-            <span className='pokemon-map__statusLabel'>Estado</span>
-            <p className='pokemon-map__statusText'>{locationStatus}</p>
-          </div>
-          <div className='pokemon-map__statusBubble'>
-            <span className='pokemon-map__statusLabel'>Totems visibles</span>
-            <p className='pokemon-map__statusText'>
-              {geojsonData?.features?.filter(f => f?.properties?.isTotem).length ?? 'Cargando...'}
-            </p>
-          </div>
-        </section>
       </main>
     </div>
   )
